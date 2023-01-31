@@ -1,0 +1,44 @@
+<html>
+<html>
+
+<head>
+    <link th:href="@{/player-list-stylesheet.css}" rel="stylesheet">
+</head>
+
+<body>
+
+<div class="topnav">
+    <a th:href="@{/form-en}">Form</a>
+    <a class="active" th:href="@{/}">Player List</a>
+</div>
+<div class="container">
+    <table>
+        <tr class="head">
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Gender</th>
+            <th>Date of Birth</th>
+            <th>Country</th>
+            <th>Team name</th>
+            <th></th>
+        </tr>
+        <tr th:each="player: ${playersList}">
+            <td th:text="${player.firstName}">----
+            </th>
+            <td th:text="${player.lastName}">----</td>
+            <td th:text="${player.gender}">----</td>
+            <td type="date" th:text="${player.dateOfBirth}">----</td>
+            <td th:text="${player.country}">----</td>
+            <td th:text="${player.getTeam().getName()}">----</td>
+            <td>
+                <a role="button" style="color:white; background-color: #263238" class="table-button"
+                   th:href="@{/form-en/(id = ${player.id})}">Update</a>
+            </td>
+        </tr>
+    </table>
+
+</div>
+
+</body>
+
+</html>
