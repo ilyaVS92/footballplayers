@@ -1,0 +1,44 @@
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<html>
+
+<head>
+    <link th:href="@{/form-stylesheet.css}" rel="stylesheet">
+</head>
+
+<body>
+<div class="topnav">
+    <a class="active" th:href="@{/form-en}">Добавить игрока</a>
+    <a th:href="@{/}">Список игроков</a>
+</div>
+<div class="container">
+    <div>
+        <h3 style="color:white; background-color: #263238">Детали игрока</h3>
+    </div>
+    <form method="post" th:object="${blankPlayer}" th:action="@{/submitPlayer}">
+
+        <div>Имя</div>
+        <input type="text" placeholder="имя" th:field="*{firstName}">
+        <div>Фамилия</div>
+        <input type="text" placeholder="фамилия" th:field="*{lastName}">
+        <div>Пол</div>
+        <input type="text" placeholder="пол" th:field="*{gender}">
+        <div>Дата рождения</div>
+        <input type="date" style="color:black" th:field="*{dateOfBirth}">
+        <div>Команда (введите новую или выберете с помощю списка)</div>
+        <input list="teamz" th:field="*{teamName}" placeholder="выбор команды">
+        <datalist id="teamz">
+            <option th:each="teamName: ${teamNameList}" th:text="${teamName}" th:value="${teamName}">
+            </option>
+        </datalist>
+        <div>Страна</div>
+        <select class="select" th:field="*{country}">
+            <option style="color:blue" value=""></option>
+            <option th:each="country: ${countries}" th:text="${country}" th:value="${country}"></option>
+        </select>
+        <input type="hidden" th:field="*{id}">
+        <input type="submit" value="Сохранить">
+    </form>
+</div>
+</body>
+
+</html>

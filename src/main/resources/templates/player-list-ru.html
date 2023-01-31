@@ -1,0 +1,44 @@
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<html>
+
+<head>
+    <link th:href="@{/player-list-stylesheet.css}" rel="stylesheet">
+</head>
+
+<body>
+
+<div class="topnav">
+    <a th:href="@{/form-en}">Добавить игрока</a>
+    <a class="active" th:href="@{/}">Список игроков</a>
+</div>
+<div class="container">
+    <table>
+        <tr class="head">
+            <th>Имя</th>
+            <th>Фамилия</th>
+            <th>Пол</th>
+            <th>Дата рождения</th>
+            <th>Страна</th>
+            <th>Команда</th>
+            <th></th>
+        </tr>
+        <tr th:each="player: ${playersList}">
+            <td th:text="${player.firstName}">----
+            </th>
+            <td th:text="${player.lastName}">----</td>
+            <td th:text="${player.gender}">----</td>
+            <td type="date" th:text="${player.dateOfBirth}">----</td>
+            <td th:text="${player.country}">----</td>
+            <td th:text="${player.getTeam().getName()}">----</td>
+            <td>
+                <a role="button" style="color:white; background-color: #263238" class="table-button"
+                   th:href="@{/form-en/(id = ${player.id})}">Редактировать</a>
+            </td>
+        </tr>
+    </table>
+
+</div>
+
+</body>
+
+</html>
