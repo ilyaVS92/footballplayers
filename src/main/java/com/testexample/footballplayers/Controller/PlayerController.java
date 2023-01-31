@@ -26,7 +26,7 @@ public class PlayerController {
     @GetMapping("/")
     public String getPlayerPage(Model model) {
         model.addAttribute("playersList", playerService.findAll());
-        return "player-list-en";
+        return "player-list-ru";
     }
 
     @GetMapping("/form-en")
@@ -34,7 +34,7 @@ public class PlayerController {
         model.addAttribute("teamNameList", teamService.getTeamNameList());
         model.addAttribute("countries", Constants.countries);
         model.addAttribute("blankPlayer", playerService.findByIdOrReturnNew(id));
-        return "form-en";
+        return "form-ru";
     }
 
     @PostMapping("/submitPlayer")

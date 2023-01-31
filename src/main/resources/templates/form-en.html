@@ -31,7 +31,7 @@
             <option th:each="teamName: ${teamNameList}" th:text="${teamName}" th:value="${teamName}">
             </option>
         </datalist>
-        <div>First Name:</div>
+        <div>Country</div>
         <select class="select" th:field="*{country}">
             <option style="color:blue" value="">Choose country</option>
             <option th:each="country: ${countries}" th:text="${country}" th:value="${country}"></option>
